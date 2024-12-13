@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Left Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #FFF;
+        }
+        #result {
+            font-size: 120px;
+            font-weight: bold;
+        }
+        #description {
+            font-size: 20px;
+            color: #CCC;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <div id="description">Days remaining until June 14, 2025.</div>
+
+    <script>
+        function calculateDaysLeft() {
+            const futureDate = "2025-06-14";
+            const resultDiv = document.getElementById('result');
+
+            const today = new Date();
+            const targetDate = new Date(futureDate);
+
+            const timeDiff = targetDate - today;
+
+            if (timeDiff < 0) {
+                resultDiv.textContent = "The selected date is in the past.";
+                return;
+            }
+
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+            resultDiv.textContent = `${daysLeft} day(s) left.`;
+        }
+
+        calculateDaysLeft();
+    </script>
+</body>
+</html>
